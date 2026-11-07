@@ -1,0 +1,2 @@
+// Hunt for account-takeover indicators across sign-in telemetry.
+// Validate table and field names against the workspace schema.

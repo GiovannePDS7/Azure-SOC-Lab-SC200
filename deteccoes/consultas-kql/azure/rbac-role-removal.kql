@@ -1,0 +1,2 @@
+// Detect Azure RBAC role removals.
+// Validate table and field names against the workspace schema.

@@ -1,0 +1,2 @@
+// Hunt for scheduled tasks that may indicate persistence.
+// Validate table and field names against the workspace schema.

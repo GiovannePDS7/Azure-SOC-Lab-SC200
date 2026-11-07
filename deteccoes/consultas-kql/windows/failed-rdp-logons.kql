@@ -1,0 +1,9 @@
+SecurityEvent
+| where EventID == 4625
+| where IpAddress !in ("-", "::1", "127.0.0.1")
+| summarize Falhas = count(),
+            Contas = dcount(TargetUserName),
+            Primeiro = min(TimeGenerated),
+            Ultimo = max(TimeGenerated)
+    by IpAddress, Computer
+| where Falhas >= 3

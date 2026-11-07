@@ -1,0 +1,10 @@
+AuditLogs
+| where Category == "RoleManagement"
+| where OperationName has "Add member to role"
+| where Result =~ "success"
+| project
+    TimeGenerated,
+    OperationName,
+    Result,
+    InitiatedBy,
+    TargetResources

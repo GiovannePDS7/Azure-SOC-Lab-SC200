@@ -1,0 +1,9 @@
+SigninLogs
+| where ResultType == "50126"
+| where isnotempty(UserPrincipalName)
+| summarize
+    Falhas = count(),
+    Primeiro = min(TimeGenerated),
+    Ultimo = max(TimeGenerated)
+    by UserPrincipalName, IPAddress
+| where Falhas >= 5
