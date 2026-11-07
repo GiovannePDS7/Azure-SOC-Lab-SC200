@@ -1,14 +1,13 @@
 # Evidências
 
-Armazene capturas de tela e artefatos sanitizados, organizados por fase do
-laboratório. Não inclua segredos, dados pessoais, tokens de acesso ou informações
-reais de clientes nos commits.
+As evidências disponíveis estão organizadas por fase do laboratório. A execução foi
+concluída e o ambiente Azure foi removido; a ausência de capturas operacionais neste
+repositório não altera o estado concluído do laboratório.
 
-O laboratório foi excluído após o término dos créditos gratuitos do Azure. Restaram
-algumas capturas de tela, que serão adicionadas posteriormente. Antes de publicá-las,
-remova ou oculte credenciais, dados pessoais, tokens, endereços IP públicos e IDs de
-tenant ou assinatura.
+Não inclua segredos, dados pessoais, tokens de acesso ou informações reais de clientes
+nos commits. Sanitize qualquer evidência antes de adicioná-la, ocultando credenciais,
+endereços IP públicos, IDs de tenant ou assinatura e dados da barra de endereço do
+navegador.
 
-As pastas vazias contêm arquivos `.gitkeep` para preservar a estrutura de evidências
-no Git. Quando as capturas forem adicionadas, organize-as por fase e substitua os
-marcadores correspondentes por evidências devidamente sanitizadas.
+Os arquivos `.gitkeep` mantêm no Git a estrutura das pastas sem artefatos anexados.
+Os materiais disponíveis foram mantidos sanitizados.

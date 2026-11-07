@@ -15,8 +15,7 @@
 - **Validação:** o responsável pelo laboratório confirmou que esta regra foi
   testada e validada no Azure antes da exclusão do ambiente. O PDF registra que,
   na fase de criação, as regras 2 a 8 se basearam em telemetria previamente
-  confirmada. As capturas comprobatórias restantes serão adicionadas após
-  sanitização.
+  confirmada. As capturas comprobatórias não foram incluídas no repositório.
 - **Ajuste:** o limiar baixo foi escolhido para os eventos controlados do laboratório.
   Valide os formatos das mensagens Syslog e aumente o limiar ou adicione exclusões
   de origens aprovadas antes de usar a regra em produção.

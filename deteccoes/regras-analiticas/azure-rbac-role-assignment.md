@@ -12,8 +12,8 @@
   habilitada, agrupamento de incidentes desabilitado e supressão desabilitada.
 - **Validação:** o responsável pelo laboratório confirmou que esta regra foi
   testada e validada no Azure antes da exclusão do ambiente. O registro oficial
-  descreve telemetria Azure RBAC previamente confirmada na fase de criação; as
-  capturas comprobatórias restantes serão adicionadas após sanitização.
+  informa que a telemetria de Azure RBAC já havia sido confirmada durante a fase de
+  criação. As capturas comprobatórias não foram incluídas no repositório.
 - **Ajuste:** valide os valores de operação e estado no workspace de destino e
   investigue atribuições temporárias de funções e sua remoção.
 

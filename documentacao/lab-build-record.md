@@ -1,12 +1,16 @@
 # Registro sanitizado da implantação do laboratório
 
+> **Execução concluída:** todas as oito regras analíticas foram testadas e validadas
+> no Azure antes da remoção do ambiente. A ausência de capturas adicionais neste
+> repositório não altera esse estado.
+
 Esta página reúne os recursos, os fluxos de coleta, as detecções e os resultados de
 validação descritos nos arquivos fornecidos
 `Lab_SOC_Azure_SC200_Documentacao.pdf` e `Azure_Sentinel_analytics_rules.json`. O PDF
 se apresenta como o registro técnico do laboratório e informa que oito regras
-analíticas foram criadas e habilitadas. O usuário confirmou que todas as oito regras
-foram testadas e validadas no ambiente Azure. Esta página é um resumo sanitizado, não
-uma cópia do PDF ou das capturas de tela.
+analíticas foram criadas e habilitadas. O responsável pelo laboratório confirmou que
+todas as oito regras foram testadas e validadas no ambiente Azure. Esta página é um
+resumo sanitizado, não uma cópia do PDF ou das capturas de tela.
 
 O JSON exportado está versionado em
 [`deteccoes/regras-analiticas/azure-sentinel-analytics-rules.json`](../deteccoes/regras-analiticas/azure-sentinel-analytics-rules.json).
@@ -16,8 +20,8 @@ neste repositório quando diferem do PDF.
 
 Após o término dos créditos gratuitos, o laboratório foi excluído para evitar
 cobranças. Portanto, os recursos e as configurações descritos neste registro são
-históricos, não representam um ambiente Azure ativo. Restaram algumas capturas de
-tela, que serão adicionadas posteriormente após sanitização.
+históricos, não representam um ambiente Azure ativo. As capturas de tela da execução
+não fazem parte desta versão do repositório.
 
 ## Escopo do laboratório e recursos implantados
 
@@ -58,8 +62,8 @@ orçamento; esses dados foram intencionalmente omitidos.
 O documento registra que foi necessário corrigir uma configuração de diagnóstico
 para que os dados de Azure Activity fossem ingeridos. Também informa que a política
 de linha de comando do evento Windows 4688 foi habilitada para incluir `CommandLine`
-nos eventos de criação de processos. Consultas inicialmente vazias foram
-investigadas pela validação do AMA/DCR e pela seleção de um intervalo de tempo
+nos eventos de criação de processos. As consultas inicialmente vazias foram
+investigadas com a validação do AMA/DCR e a escolha de um intervalo de tempo
 adequado, em vez de recriar recursos sem evidências.
 
 ## Regras de detecção no export fornecido
@@ -97,8 +101,7 @@ legível e contêm as consultas.
   de engenharia de detecção.
 - O responsável pelo laboratório confirmou que todas as oito regras foram testadas e
   validadas no ambiente Azure antes da exclusão dos recursos. A validação foi
-  executada no ambiente; as capturas comprobatórias restantes ainda serão
-  adicionadas após sanitização.
+  concluída; as capturas comprobatórias não foram incluídas neste repositório.
 - A regra RDP foi testada novamente na VM do laboratório. O registro relata que a
   consulta encontrou sete falhas 4625 de um IP contra `vm-win-01` em cerca de
   23 segundos; em seguida, foi gerado um incidente com seis alertas agrupados. As
@@ -113,13 +116,12 @@ legível e contêm as consultas.
 - O JSON fornecido contém mapeamentos de entidades somente para SSH, RDP e falhas de
   autenticação no Entra ID. A confirmação de teste e validação das regras não altera
   os mapeamentos descritos no export.
-- O PDF também apresenta informações conflitantes sobre a revisão ATT&CK: a seção da
-  matriz lista verificações por técnica como pendentes, enquanto a lista final
-  afirma que as capturas de antes e depois foram concluídas. Como os valores
-  completos da matriz posterior às regras não foram transcritos aqui, este registro
-  não estabelece a variação exata de cobertura. Os testes das regras não substituem
-  essa comparação de cobertura. O export usa técnicas principais para T1053, T1059
-  e T1136, ainda que as descrições ou simulações indiquem subtécnicas.
+- O PDF apresenta registros diferentes sobre a revisão da matriz ATT&CK. Como os
+  valores completos da matriz posterior às regras não foram transcritos, este
+  repositório não quantifica a variação de cobertura. Essa é uma limitação documental;
+  não altera a confirmação de que as oito regras foram testadas e validadas. O export
+  usa técnicas principais para T1053, T1059 e T1136, enquanto as descrições ou
+  simulações indicam subtécnicas.
 
 ## Observações da pasta de trabalho e estado de conclusão
 
@@ -130,11 +132,10 @@ T1059.001 1 e tarefa agendada T1053.005 1. São contagens de eventos retornados,
 de ataques distintos. Um painel de principais origens registrou 37 eventos em dois
 IPs de origem (30 e 7); os endereços foram intencionalmente omitidos.
 
-O estado da pasta de trabalho é inconsistente no PDF: a seção correspondente diz
-que o trabalho estava em andamento, com um quarto painel e o salvamento final
-pendentes, mas a lista da fase apresentada depois marca a pasta de trabalho como
-concluída, com base na confirmação do autor. As capturas restantes poderão ajudar a
-esclarecer essa divergência quando forem adicionadas.
+O PDF registra uma etapa intermediária anterior à conclusão da pasta de trabalho.
+Segundo a confirmação final do responsável, o painel de alterações de privilégios
+foi concluído e a pasta de trabalho foi salva. Este registro adota esse
+estado final; a divergência do PDF é apenas histórica.
 
 ## Referência adotada para a configuração RDP
 
@@ -155,10 +156,9 @@ laboratório; o agrupamento reduziu a duplicação de incidentes, mas não elimi
 registros repetidos de alerta.
 
 As anotações detalhadas do incidente confirmam a tática Credential Access e as duas
-entidades mapeadas, mas registram que T1110 e a descrição ainda não haviam sido
-verificados em um alerta individual naquela etapa. O responsável confirmou
-posteriormente que todas as regras foram testadas e validadas no Azure; a captura
-desse alerta específico ainda não está disponível no repositório.
+entidades mapeadas. O responsável confirmou que T1110 e as demais regras foram
+testadas e validadas no Azure. A captura desse alerta individual
+não foi incluída no repositório.
 
 ## Controles de custo e segurança
 

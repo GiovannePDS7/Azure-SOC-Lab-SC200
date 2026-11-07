@@ -1,5 +1,9 @@
 # Configuração e escopo do laboratório
 
+> **Estado:** execução concluída. O ambiente foi removido após o
+> encerramento dos créditos gratuitos do Azure. As etapas abaixo registram a
+> configuração histórica para consulta ou eventual recriação.
+
 Este repositório registra um laboratório SOC pessoal e isolado no Microsoft Azure,
 voltado à prática com o Microsoft Sentinel e à preparação para a SC-200. A telemetria
 e as simulações são controladas; não use dados de clientes nem publique no Git
@@ -26,8 +30,8 @@ O [registro do laboratório](lab-build-record.md) contém o inventário e o esta
 descritos no documento oficial, complementados pela confirmação de que todas as
 regras foram testadas e validadas no Azure. O laboratório foi excluído após o fim
 dos créditos gratuitos para evitar cobranças; as etapas acima descrevem a
-configuração histórica e podem servir de referência para uma futura recriação.
-Algumas capturas de tela ainda serão adicionadas ao repositório, após sanitização.
+configuração histórica e servem de referência para uma eventual recriação. As
+capturas operacionais não foram incluídas nesta versão do repositório.
 
 ## Controles operacionais
 

@@ -13,8 +13,8 @@
   supressão está desabilitada.
 - **Validação:** o responsável pelo laboratório confirmou que esta regra foi
   testada e validada no Azure antes da exclusão do ambiente. O registro oficial
-  descreve telemetria de autenticação previamente confirmada na fase de criação;
-  as capturas comprobatórias restantes serão adicionadas após sanitização.
+  informa que a telemetria de autenticação já havia sido confirmada durante a fase
+  de criação. As capturas comprobatórias não foram incluídas no repositório.
 - **Ajuste:** considere os padrões esperados de falhas do provedor de identidade e
   as exclusões de origens aprovadas. Antes de usar em produção, ajuste o limiar à
   atividade normal do tenant.

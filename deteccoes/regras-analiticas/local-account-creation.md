@@ -12,8 +12,8 @@
   habilitada, agrupamento de incidentes desabilitado e supressão desabilitada.
 - **Validação:** o responsável pelo laboratório confirmou que esta regra foi
   testada e validada no Azure antes da exclusão do ambiente. O registro oficial
-  descreve a telemetria histórica como confirmada na fase de criação; as capturas
-  comprobatórias restantes serão adicionadas após sanitização.
+  informa que a telemetria histórica havia sido confirmada durante a fase de
+  criação. As capturas comprobatórias não foram incluídas no repositório.
 - **Ajuste:** valide as atividades esperadas de provisionamento e administração e
   adicione exclusões aprovadas quando apropriado.
 

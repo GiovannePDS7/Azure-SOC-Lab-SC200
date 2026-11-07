@@ -1,14 +1,14 @@
 # Cobertura MITRE ATT&CK
 
-Esta tabela registra as oito regras analíticas do Sentinel incluídas no arquivo
-exportado e as técnicas associadas a elas. Para algumas regras, o export registra a
-técnica principal, enquanto a simulação ou a descrição da regra cita uma subtécnica
-mais específica. A tabela não comprova cobertura completa do ATT&CK. A seção
-detalhada da matriz no registro oficial lista verificações pendentes, mas a lista
-final afirma que as capturas de antes e depois foram concluídas; a variação exata de
-cobertura não foi transcrita. O responsável confirmou que todas as oito regras foram
-testadas e validadas no Azure antes da exclusão do laboratório. Essa validação das
-regras não comprova, por si só, a variação da cobertura na matriz ATT&CK.
+Esta tabela reúne as oito regras analíticas do Sentinel incluídas no arquivo
+exportado e as técnicas associadas a elas. Em algumas regras, o export registra a
+técnica principal, enquanto a simulação ou a descrição cita uma subtécnica mais
+específica. A tabela não comprova cobertura completa do ATT&CK. O registro oficial
+traz informações divergentes sobre a revisão da matriz; como os valores completos
+da matriz após a inclusão das regras não foram transcritos, este repositório não
+quantifica a variação de cobertura. O responsável confirmou que todas as oito regras
+foram testadas e validadas no Azure antes da exclusão do laboratório. Essa validação
+não comprova, por si só, a variação da cobertura na matriz ATT&CK.
 
 | Técnica registrada no export | Simulação / comportamento | Detecção | Tabela de origem | Estado registrado |
 | --- | --- | --- | --- | --- |
@@ -29,20 +29,18 @@ cobertura, veja o [registro sanitizado do laboratório](lab-build-record.md) e o
 
 O documento oficial informa que a matriz ATT&CK do Sentinel foi capturada em
 20/10/2026, antes da criação da primeira regra do laboratório. Os valores abaixo
-foram lidos visualmente da captura de tela; o documento indica que a maioria das
-associações de técnicas ainda precisa de confirmação. As capturas restantes serão
-adicionadas posteriormente, conforme disponibilidade.
+foram estimados visualmente a partir da captura disponível. Como não há captura
+posterior correspondente neste repositório, não é possível calcular uma variação
+exata de cobertura.
 
-| Técnica | Valor aproximado exibido na linha de base | Confiança indicada na fonte |
+| Técnica | Valor aproximado na linha de base | Qualidade da leitura |
 | --- | ---: | --- |
-| T1110 Brute Force | 5 | Confirmado no painel aberto |
-| T1136 Create Account | 4 | Precisa de confirmação |
-| T1098 Account Manipulation | 4 | Precisa de confirmação |
-| T1059 Command and Scripting Interpreter | 1 | Precisa de confirmação |
-| T1053 Scheduled Task/Job | Nenhum valor visível | Aparentemente sem cobertura; confirmar |
-| T1078 Valid Accounts | 18 | Precisa de confirmação |
+| T1110 Brute Force | 5 | Valor legível na captura |
+| T1136 Create Account | 4 | Estimativa visual |
+| T1098 Account Manipulation | 4 | Estimativa visual |
+| T1059 Command and Scripting Interpreter | 1 | Estimativa visual |
+| T1053 Scheduled Task/Job | Nenhum valor visível | Valor não identificável na captura |
+| T1078 Valid Accounts | 18 | Estimativa visual |
 
-Se as capturas posteriores forem recuperadas, use os mesmos filtros da matriz ao
-compará-las e confira os nomes e tipos das regras associados a cada técnica. Os
-números são aproximados e não devem ser apresentados como uma diferença exata após
-a criação das regras.
+Os valores são aproximados e não devem ser apresentados como uma diferença exata
+após a criação das regras.

@@ -1,3 +1,3 @@
 # Procedimentos operacionais
 
-Procedimentos operacionais para triagem, contenção, investigação e recuperação.
+Orientações para triagem, contenção, investigação e recuperação.

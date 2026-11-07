@@ -4,9 +4,9 @@
 
 - **Atividade benigna possível:** um usuário legítimo que digite a senha errada
   repetidamente pode atingir o limiar de três falhas de logon usado no laboratório.
-- **Evidência e limiar do laboratório:** o registro oficial observou até quatro
-  eventos 4625 em uma janela anterior de 10 minutos e usou `Falhas >= 3` para que a
-  simulação controlada gerasse um alerta.
+- **Evidência e limiar do laboratório:** o registro oficial relata até quatro
+  eventos 4625 em uma janela de consulta de 10 minutos; o limiar `Falhas >= 3`
+  permitiu que a simulação controlada gerasse um alerta.
 - **Ajuste para produção:** considere um limiar mais alto (a fonte sugere, por
   exemplo, dez ou mais falhas) e uma watchlist de escopo restrito para origens
   conhecidas. Antes de excluir qualquer origem, valide o limiar no ambiente.

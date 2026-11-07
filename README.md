@@ -4,15 +4,22 @@ Laboratório SOC de ponta a ponta no Azure, com Microsoft Sentinel, KQL, Sysmon,
 MITRE ATT&CK, simulação de ataques, engenharia de detecção, resposta a incidentes,
 SOAR, busca de ameaças e preparação para a certificação SC-200.
 
+> **Estado:** execução concluída. O ambiente Azure foi removido após o encerramento
+> do período de créditos; este repositório registra os resultados e a configuração
+> histórica do laboratório.
+
 ## Mapa do repositório
 
-- [Documentação](documentacao/README.md): arquitetura, configuração, custos e [registro consolidado do laboratório](documentacao/lab-build-record.md).
-- [Infraestrutura](infraestrutura/README.md): configuração do Azure, do Sentinel, da rede e dos endpoints.
-- [Simulações](simulacoes/README.md): testes controlados associados ao MITRE ATT&CK.
-- [Detecções](deteccoes/README.md): consultas KQL, regras analíticas e ajustes.
-- [Incidentes](incidentes/README.md) e [procedimentos operacionais](procedimentos-operacionais/README.md): investigações e respostas.
-- [Busca de ameaças](caca-ameacas/README.md): hipóteses, consultas e favoritos.
-- [Evidências](evidencias/README.md): materiais organizados por fase do laboratório.
+| Área | Conteúdo |
+| --- | --- |
+| [Documentação](documentacao/README.md) | Arquitetura, configuração, custos e [registro consolidado do laboratório](documentacao/lab-build-record.md) |
+| [Infraestrutura](infraestrutura/README.md) | Configuração do Azure, do Sentinel, da rede e dos endpoints |
+| [Simulações](simulacoes/README.md) | Testes controlados associados ao MITRE ATT&CK |
+| [Detecções](deteccoes/README.md) | Consultas KQL, regras analíticas e ajustes |
+| [Incidentes](incidentes/README.md) | Investigações e linhas do tempo |
+| [Procedimentos operacionais](procedimentos-operacionais/README.md) | Orientações de resposta e operação |
+| [Busca de ameaças](caca-ameacas/README.md) | Hipóteses, consultas e favoritos |
+| [Evidências](evidencias/README.md) | Materiais sanitizados organizados por fase |
 
-O conteúdo deve ser atualizado à medida que cada fase for concluída. Não inclua
-segredos, dados pessoais nem evidências de clientes reais neste repositório.
+Não inclua segredos, dados pessoais nem evidências de clientes reais neste
+repositório.

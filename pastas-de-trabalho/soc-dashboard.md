@@ -11,7 +11,7 @@ retornados; não representam ataques distintos.
 | Falhas de autenticação por origem | RDP no Windows (`SecurityEvent` 4625), SSH no Linux (`Syslog`), Entra ID (`SigninLogs`, ResultType 50126) | SSH 18, RDP 12, Entra ID 7 |
 | Principais IPs de origem | Mesmas origens de autenticação, agrupadas por IP | 37 eventos em dois IPs de origem (30 e 7); endereços omitidos |
 | Eventos por técnica ATT&CK | `SecurityEvent`, `Syslog`, `SigninLogs` | T1110 SSH 18; T1110 RDP 12; T1110 Entra ID 7; conta local T1136.001 3; PowerShell T1059.001 1; tarefa agendada T1053.005 1 |
-| Alterações de privilégios por origem | Painel planejado | Indicado como pendente na seção sobre a pasta de trabalho |
+| Alterações de privilégios por origem | Painel da pasta de trabalho | Concluído e salvo, conforme confirmação final do responsável |
 
 ## Consulta de falhas de autenticação
 
@@ -42,13 +42,10 @@ Não copie para este repositório endereços IP públicos sem sanitização.
 
 ## Estado e interpretação
 
-A seção detalhada sobre a pasta de trabalho no documento oficial informa que ela
-estava em andamento, com o painel de alterações de privilégios e o salvamento final
-pendentes. Uma lista de verificação posterior marca o trabalho como concluído, com
-base na confirmação do autor. Verifique a versão salva atual antes de considerá-la
-finalizada.
+O documento oficial descreve uma etapa intermediária anterior à conclusão da pasta
+de trabalho. Segundo a confirmação final do responsável, o painel de alterações de
+privilégios foi concluído e a pasta foi salva. As contagens acima são os resultados
+registrados para o período de 30 dias, não uma visão atual do Sentinel.
 
-As contagens acima são resultados registrados para o período de 30 dias documentado,
-não uma visão atualizada. Execute novamente a pasta de trabalho após alterar o
-período ou a coleta de dados e apresente separadamente as contagens de eventos e as
-contagens de incidentes ou ataques.
+Em uma nova implantação ou coleta, execute as consultas para o período desejado e
+apresente separadamente contagens de eventos e de incidentes ou ataques.
