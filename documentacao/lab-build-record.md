@@ -21,7 +21,8 @@ neste repositório quando diferem do PDF.
 Após o término dos créditos gratuitos, o laboratório foi excluído para evitar
 cobranças. Portanto, os recursos e as configurações descritos neste registro são
 históricos, não representam um ambiente Azure ativo. As capturas de tela da execução
-não fazem parte desta versão do repositório.
+selecionadas estão organizadas em [evidências](../evidencias/README.md) e devem ser
+revisadas antes de compartilhamento ou versionamento.
 
 ## Escopo do laboratório e recursos implantados
 
@@ -100,8 +101,8 @@ legível e contêm as consultas.
 - O PDF informa que oito de oito regras foram criadas, ativadas e habilitadas na fase
   de engenharia de detecção.
 - O responsável pelo laboratório confirmou que todas as oito regras foram testadas e
-  validadas no ambiente Azure antes da exclusão dos recursos. A validação foi
-  concluída; as capturas comprobatórias não foram incluídas neste repositório.
+  validadas no ambiente Azure antes da exclusão dos recursos. A coleção de capturas
+  não comprova individualmente todos os resultados informados.
 - A regra RDP foi testada novamente na VM do laboratório. O registro relata que a
   consulta encontrou sete falhas 4625 de um IP contra `vm-win-01` em cerca de
   23 segundos; em seguida, foi gerado um incidente com seis alertas agrupados. As
@@ -158,7 +159,7 @@ registros repetidos de alerta.
 As anotações detalhadas do incidente confirmam a tática Credential Access e as duas
 entidades mapeadas. O responsável confirmou que T1110 e as demais regras foram
 testadas e validadas no Azure. A captura desse alerta individual
-não foi incluída no repositório.
+não foi identificada entre as evidências selecionadas.
 
 ## Controles de custo e segurança
 

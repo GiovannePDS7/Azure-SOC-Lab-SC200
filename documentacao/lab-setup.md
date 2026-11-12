@@ -31,7 +31,10 @@ descritos no documento oficial, complementados pela confirmação de que todas a
 regras foram testadas e validadas no Azure. O laboratório foi excluído após o fim
 dos créditos gratuitos para evitar cobranças; as etapas acima descrevem a
 configuração histórica e servem de referência para uma eventual recriação. As
-capturas operacionais não foram incluídas nesta versão do repositório.
+capturas operacionais foram organizadas em [evidências](../evidencias/README.md).
+Elas receberam tarjas para ocultar dados pessoais e identificadores não documentados;
+nomes de recursos e redes descritos neste repositório foram mantidos. Revise as
+imagens manualmente antes de compartilhar ou versionar.
 
 ## Controles operacionais
 

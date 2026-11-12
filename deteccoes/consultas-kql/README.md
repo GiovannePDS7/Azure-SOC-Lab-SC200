@@ -21,3 +21,9 @@ do workspace ativo e ajuste-as ao ambiente.
 | [Falhas de autenticação no Entra ID](entra-id/failed-signins.kql) | ResultType 50126 |
 
 O export JSON correspondente está em [regras analíticas](../regras-analiticas/azure-sentinel-analytics-rules.json).
+
+## Consulta adicional
+
+[Remoção de atribuição Azure RBAC](azure/rbac-role-removal.kql) é uma consulta de
+apoio à investigação, baseada na operação observada no laboratório. Ela não faz
+parte das oito regras do export e deve ser validada no workspace antes do uso.

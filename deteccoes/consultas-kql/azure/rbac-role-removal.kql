@@ -1,2 +1,10 @@
-// Detect Azure RBAC role removals.
-// Validate table and field names against the workspace schema.
+AzureActivity
+| where OperationNameValue =~ "MICROSOFT.AUTHORIZATION/ROLEASSIGNMENTS/DELETE"
+| where ActivityStatusValue =~ "Success"
+| project
+    TimeGenerated,
+    Caller,
+    ResourceGroup,
+    OperationNameValue,
+    ActivityStatusValue,
+    Properties

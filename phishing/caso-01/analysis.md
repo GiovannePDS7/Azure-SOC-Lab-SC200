@@ -1,7 +1,6 @@
 # Análise do caso 01
 
-Registre o contexto da mensagem, o método de análise, as descobertas e a conclusão
-deste caso sanitizado.
+Análise de uma mensagem sintética de treinamento que simula coleta de credenciais.
 
 ## Gabarito
 

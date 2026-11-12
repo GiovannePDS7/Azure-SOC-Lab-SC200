@@ -16,10 +16,10 @@ SOAR, busca de ameaças e preparação para a certificação SC-200.
 | [Infraestrutura](infraestrutura/README.md) | Configuração do Azure, do Sentinel, da rede e dos endpoints |
 | [Simulações](simulacoes/README.md) | Testes controlados associados ao MITRE ATT&CK |
 | [Detecções](deteccoes/README.md) | Consultas KQL, regras analíticas e ajustes |
-| [Incidentes](incidentes/README.md) | Investigações e linhas do tempo |
-| [Procedimentos operacionais](procedimentos-operacionais/README.md) | Orientações de resposta e operação |
-| [Busca de ameaças](caca-ameacas/README.md) | Hipóteses, consultas e favoritos |
-| [Evidências](evidencias/README.md) | Materiais sanitizados organizados por fase |
+| [Busca de ameaças](caca-ameacas/README.md) | Hipóteses e consultas de referência |
+| [Phishing](phishing/README.md) | Triagem de duas mensagens sintéticas |
+| [Pastas de trabalho](pastas-de-trabalho/README.md) | Painéis e resultados registrados |
+| [Evidências](evidencias/README.md) | Capturas por fase com tarjas; identificadores documentados foram mantidos |
 
 Não inclua segredos, dados pessoais nem evidências de clientes reais neste
 repositório.
