@@ -1,4 +1,4 @@
-# Laboratório SOC no Azure — SC-200
+# Laboratório SOC no Azure — SC-200 🛡️
 
 Laboratório prático de operações de segurança no Azure, com coleta de telemetria,
 simulações controladas e detecções no Microsoft Sentinel para estudo da certificação
