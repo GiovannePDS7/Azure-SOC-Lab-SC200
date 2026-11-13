@@ -1,0 +1,83 @@
+Received: from mx.empresa-cliente.example (mx.empresa-cliente.example
+ [203.0.113.25]) by mailstore.empresa-cliente.example with ESMTPS id QWE789
+ for <financeiro@empresa-cliente.example>; Tue, 20 Oct 2026 15:41:15 +0000
+Received: from smtp-out.mailhost-cloud.example
+ (smtp-out.mailhost-cloud.example [198.51.100.140]) by
+ mx.empresa-cliente.example with ESMTPS id 55aa21; Tue, 20 Oct 2026 15:41:12
+ +0000
+Received: from [10.8.0.6] (unknown [192.0.2.88]) by
+ smtp-out.mailhost-cloud.example with ESMTPSA id c91d; Tue, 20 Oct 2026
+ 15:41:09 +0000
+Authentication-Results: mx.empresa-cliente.example; spf=pass (sender IP is
+ 198.51.100.140) smtp.mailfrom=carla.menezes@logistica-exernplo.example;
+ dkim=pass header.d=logistica-exernplo.example header.s=default; dmarc=pass
+ (p=none) header.from=logistica-exernplo.example
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=logistica-exernplo.example; s=default; h=from:to:subject:date:message-id;
+ bh=ZmFrZWJvZHloYXNo; b=ZmFrZXNpZ25hdHVyZQ==
+Return-Path: <carla.menezes@logistica-exernplo.example>
+From: "Carla Menezes - Logistica Exemplo"
+ <carla.menezes@logistica-exernplo.example>
+Reply-To: logistica.exemplo.fin@freemail.example
+To: <financeiro@empresa-cliente.example>
+Subject: RES: Fatura 4471/2026 - =?utf-8?q?atualiza=C3=A7=C3=A3o_dos_dados_b?=
+ =?utf-8?q?anc=C3=A1rios?= (PIX)
+Date: Tue, 20 Oct 2026 12:41:07 -0300
+Message-ID: <7c1d4e90-52aa-4b1f-9b2e@logistica-exernplo.example>
+In-Reply-To: <a81f03c2-1177-4d5e-8a90@logistica-exemplo.example>
+References: <a81f03c2-1177-4d5e-8a90@logistica-exemplo.example>
+X-Mailer: Microsoft Outlook 16.0
+Importance: High
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============5782296105688783507=="
+
+--===============5782296105688783507==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Bom dia,
+
+Conforme conversamos, estamos atualizando nossos dados banc=C3=A1rios. Por fa=
+vor, utilize a nova conta e chave PIX do PDF em anexo para o pagamento da fat=
+ura 4471/2026 (vencimento na sexta-feira, 23/10). A conta anterior foi encerr=
+ada e pagamentos para ela ser=C3=A3o devolvidos com multa.
+
+Nosso telefone est=C3=A1 em manuten=C3=A7=C3=A3o esta semana, ent=C3=A3o pe=
+=C3=A7o que confirme apenas por e-mail, respondendo nesta mensagem. Precisamo=
+s da confirma=C3=A7=C3=A3o at=C3=A9 hoje =C3=A0s 17h para n=C3=A3o gerar atra=
+so no seu fluxo de pagamentos.
+
+Atenciosamente,
+Carla Menezes
+Financeiro | Log=C3=ADstica Exemplo Ltda.
+
+Em 15/10/2026 09:12, Carla Menezes <carla.menezes@logistica-exemplo.example> =
+escreveu:
+> Segue a fatura 4471/2026, vencimento 23/10, valor R$ 18.450,00.
+> Qualquer d=C3=BAvida estou =C3=A0 disposi=C3=A7=C3=A3o.
+
+--===============5782296105688783507==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Fatura_4471_2026.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2Jq
+CjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2Jq
+CjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUg
+ODQyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4g
+Pj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA0MDAgPj4Kc3RyZWFtCkJUIC9GMSAxMiBU
+ZiA1MCA3ODAgVGQgMTYgVEwKKExPR0lTVElDQSBFWEVNUExPIExUREEpIFRqIFQqCihGYXR1cmEg
+NDQ3MS8yMDI2IC0gRGFkb3MgYmFuY2FyaW9zIGF0dWFsaXphZG9zKSBUaiBUKgooKSBUaiBUKgoo
+QmFuY286IDAwMCAtIEJhbmNvIEZpY3RpY2lvKSBUaiBUKgooQWdlbmNpYTogMDAwMCAgIENvbnRh
+IGNvcnJlbnRlOiAwMDAwMC0wKSBUaiBUKgooQ2hhdmUgUElYIChDTlBKKTogMDAuMDAwLjAwMC8w
+MDAxLTAwKSBUaiBUKgooRmF2b3JlY2lkbzogTG9naXN0aWNhIEV4ZW1wbG8gTHRkYSkgVGogVCoK
+KCkgVGogVCoKKFZhbG9yOiBSJCAxOC40NTAsMDAgICBWZW5jaW1lbnRvOiAyMy8xMC8yMDI2KSBU
+aiBUKgooQSBjb250YSBhbnRlcmlvciBmb2kgZW5jZXJyYWRhLikgVGogVCoKRVQKZW5kc3RyZWFt
+CmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQg
+L0hlbHZldGljYSA+PgplbmRvYmoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAw
+MDA5IDAwMDAwIG4gCjAwMDAwMDAwNTggMDAwMDAgbiAKMDAwMDAwMDExNSAwMDAwMCBuIAowMDAw
+MDAwMjQxIDAwMDAwIG4gCjAwMDAwMDA2OTIgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA2IC9S
+b290IDEgMCBSID4+CnN0YXJ0eHJlZgo3NjIKJSVFT0YK
+
+--===============5782296105688783507==--

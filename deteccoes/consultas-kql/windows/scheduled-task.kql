@@ -1,0 +1,10 @@
+SecurityEvent
+| where EventID == 4688
+| where NewProcessName endswith "\\schtasks.exe"
+| where CommandLine has "/Create"
+| project
+    TimeGenerated,
+    Computer,
+    NewProcessName,
+    CommandLine,
+    SubjectUserName

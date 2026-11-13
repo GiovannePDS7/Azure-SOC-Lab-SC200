@@ -1,0 +1,8 @@
+SecurityEvent
+| where EventID == 4720
+| where isnotempty(TargetUserName)
+| project
+    TimeGenerated,
+    Computer,
+    TargetUserName,
+    SubjectUserName

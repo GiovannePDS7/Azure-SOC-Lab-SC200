@@ -1,0 +1,471 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspace": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/64e95673-83e8-4eef-87ce-7b98e400d155')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/64e95673-83e8-4eef-87ce-7b98e400d155')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2023-12-01-preview",
+            "properties": {
+                "displayName": "[Lab] SSH - múltiplas tentativas com usuário inválido",
+                "description": "Detecta 3 ou mais tentativas de SSH com usuário inexistente (sshd \"Invalid user\") de um mesmo IP contra o mesmo host em 10 minutos. Simulação de T1110 no laboratório.",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "Syslog\r\n| where Facility in (\"auth\", \"authpriv\")\r\n| where ProcessName == \"sshd\"\r\n| where SyslogMessage startswith \"Invalid user\" or SyslogMessage has \"Failed password\"\r\n| extend IpOrigem = extract(@\"(\\d{1,3}(?:\\.\\d{1,3}){3})\", 1, SyslogMessage)\r\n| extend Usuario = extract(@\"(?:Invalid user|Failed password for(?: invalid user)?) (\\S+)\", 1, SyslogMessage)\r\n| where isnotempty(IpOrigem)\r\n| summarize Falhas = count(),\r\n            Usuarios = dcount(Usuario),\r\n            ListaUsuarios = make_set(Usuario, 10),\r\n            Primeiro = min(TimeGenerated),\r\n            Ultimo = max(TimeGenerated)\r\n    by IpOrigem, Computer\r\n| where Falhas >= 3",
+                "queryFrequency": "PT5M",
+                "queryPeriod": "PT10M",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "startTimeUtc": null,
+                "tactics": [
+                    "CredentialAccess"
+                ],
+                "techniques": [
+                    "T1110"
+                ],
+                "subTechniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": true,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT1H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "SingleAlert"
+                },
+                "alertDetailsOverride": {
+                    "alertDisplayNameFormat": "SSH usuário inválido: {{IpOrigem}} contra {{Computer}}",
+                    "alertDescriptionFormat": "{{Falhas}} tentativas com usuário inexistente a partir de {{IpOrigem}}.",
+                    "alertDynamicProperties": []
+                },
+                "customDetails": {
+                    "Falhas": "Falhas",
+                    "UsuariosTentados": "ListaUsuarios"
+                },
+                "entityMappings": [
+                    {
+                        "entityType": "IP",
+                        "fieldMappings": [
+                            {
+                                "identifier": "Address",
+                                "columnName": "IpOrigem"
+                            }
+                        ]
+                    },
+                    {
+                        "entityType": "Host",
+                        "fieldMappings": [
+                            {
+                                "identifier": "HostName",
+                                "columnName": "Computer"
+                            }
+                        ]
+                    }
+                ],
+                "sentinelEntitiesMappings": null,
+                "templateVersion": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/eba6c109-672a-48fe-b72a-54e761886486')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/eba6c109-672a-48fe-b72a-54e761886486')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2023-12-01-preview",
+            "properties": {
+                "displayName": "[Lab] Brute force RDP - múltiplas falhas 4625",
+                "description": "Detecta 3 ou mais falhas de logon (Event ID 4625) de um mesmo IP contra o mesmo host em 10 minutos. Simulação de T1110 no laboratório.",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "SecurityEvent\r\n| where EventID == 4625\r\n| where IpAddress !in (\"-\", \"::1\", \"127.0.0.1\")\r\n| summarize Falhas = count(),\r\n            Contas = dcount(TargetUserName),\r\n            Primeiro = min(TimeGenerated),\r\n            Ultimo = max(TimeGenerated)\r\n    by IpAddress, Computer\r\n| where Falhas >= 3",
+                "queryFrequency": "PT5M",
+                "queryPeriod": "PT10M",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "startTimeUtc": null,
+                "tactics": [
+                    "CredentialAccess"
+                ],
+                "techniques": [
+                    "T1110"
+                ],
+                "subTechniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": true,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT1H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "SingleAlert"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": {},
+                "entityMappings": [
+                    {
+                        "entityType": "IP",
+                        "fieldMappings": [
+                            {
+                                "identifier": "Address",
+                                "columnName": "IpAddress"
+                            }
+                        ]
+                    },
+                    {
+                        "entityType": "Host",
+                        "fieldMappings": [
+                            {
+                                "identifier": "HostName",
+                                "columnName": "Computer"
+                            }
+                        ]
+                    }
+                ],
+                "sentinelEntitiesMappings": null,
+                "templateVersion": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/7088a6f1-6f12-4229-a756-e2d9ff19b86a')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/7088a6f1-6f12-4229-a756-e2d9ff19b86a')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2023-12-01-preview",
+            "properties": {
+                "displayName": "[Lab] Azure RBAC - nova atribuição de função",
+                "description": "Detecta atribuições bem-sucedidas de funções Azure RBAC por meio da operação MICROSOFT.AUTHORIZATION/ROLEASSIGNMENTS/WRITE registrada no AzureActivity. Regra de laboratório associada à alteração de privilégios e à técnica T1098.",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "AzureActivity\r\n| where OperationNameValue =~ \"MICROSOFT.AUTHORIZATION/ROLEASSIGNMENTS/WRITE\"\r\n| where ActivityStatusValue =~ \"Success\"\r\n| project\r\n    TimeGenerated,\r\n    Caller,\r\n    ResourceGroup,\r\n    OperationNameValue,\r\n    ActivityStatusValue,\r\n    Properties",
+                "queryFrequency": "PT5M",
+                "queryPeriod": "PT15M",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "startTimeUtc": null,
+                "tactics": [
+                    "Persistence"
+                ],
+                "techniques": [
+                    "T1098"
+                ],
+                "subTechniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "AlertPerResult"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": null,
+                "entityMappings": null,
+                "sentinelEntitiesMappings": null,
+                "templateVersion": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/c914e0b6-e9e5-4584-a1e6-a338b2df53d5')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/c914e0b6-e9e5-4584-a1e6-a338b2df53d5')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2023-12-01-preview",
+            "properties": {
+                "displayName": "[Lab] Entra ID - atribuição de função privilegiada",
+                "description": "Detecta atribuições bem-sucedidas de funções no Microsoft Entra ID por meio de eventos RoleManagement no AuditLogs. Regra de laboratório associada à manipulação de privilégios e à técnica T1098.",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "AuditLogs\r\n| where Category == \"RoleManagement\"\r\n| where OperationName has \"Add member to role\"\r\n| where Result =~ \"success\"\r\n| project\r\n    TimeGenerated,\r\n    OperationName,\r\n    Result,\r\n    InitiatedBy,\r\n    TargetResources",
+                "queryFrequency": "PT5M",
+                "queryPeriod": "PT10M",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "startTimeUtc": null,
+                "tactics": [
+                    "Persistence"
+                ],
+                "techniques": [
+                    "T1098"
+                ],
+                "subTechniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "AlertPerResult"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": null,
+                "entityMappings": null,
+                "sentinelEntitiesMappings": null,
+                "templateVersion": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/7a48045a-0549-424d-bae2-43e91f6fe799')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/7a48045a-0549-424d-bae2-43e91f6fe799')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2023-12-01-preview",
+            "properties": {
+                "displayName": "[Lab] Windows - criação de tarefa agendada via schtasks",
+                "description": "Detecta a criação de tarefas agendadas no Windows por meio do schtasks.exe com o parâmetro /Create, utilizando eventos de criação de processo 4688. Regra de laboratório associada à técnica T1053.005 - Scheduled Task/Job: Scheduled Task.",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "SecurityEvent\r\n| where EventID == 4688\r\n| where NewProcessName endswith \"\\\\schtasks.exe\"\r\n| where CommandLine has \"/Create\"\r\n| project\r\n    TimeGenerated,\r\n    Computer,\r\n    NewProcessName,\r\n    CommandLine,\r\n    SubjectUserName",
+                "queryFrequency": "PT5M",
+                "queryPeriod": "PT10M",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "startTimeUtc": null,
+                "tactics": [
+                    "Execution"
+                ],
+                "techniques": [
+                    "T1053"
+                ],
+                "subTechniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "AlertPerResult"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": null,
+                "entityMappings": null,
+                "sentinelEntitiesMappings": null,
+                "templateVersion": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/9007ad89-71d1-4596-a523-84cfaaff0375')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/9007ad89-71d1-4596-a523-84cfaaff0375')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2023-12-01-preview",
+            "properties": {
+                "displayName": "[Lab] Windows - PowerShell com comando codificado",
+                "description": "Detecta a criação de processos PowerShell ou PowerShell Core utilizando parâmetros associados à execução de comandos codificados (-e, -ec, -enc ou -EncodedCommand), com base no Event ID 4688. Regra de laboratório associada à técnica T1059.001.",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "SecurityEvent\r\n| where EventID == 4688\r\n| where NewProcessName endswith \"\\\\powershell.exe\"\r\n    or NewProcessName endswith \"\\\\pwsh.exe\"\r\n| where CommandLine matches regex @\"(?i)(^|\\s)-(e|ec|enc|encodedcommand)(\\s|$)\"\r\n| project\r\n    TimeGenerated,\r\n    Computer,\r\n    NewProcessName,\r\n    CommandLine,\r\n    SubjectUserName",
+                "queryFrequency": "PT5M",
+                "queryPeriod": "PT10M",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "startTimeUtc": null,
+                "tactics": [
+                    "Execution"
+                ],
+                "techniques": [
+                    "T1059"
+                ],
+                "subTechniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "AlertPerResult"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": {},
+                "entityMappings": null,
+                "sentinelEntitiesMappings": null,
+                "templateVersion": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/3df465e2-c6ac-4d9d-8f88-706585f00bfe')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/3df465e2-c6ac-4d9d-8f88-706585f00bfe')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2023-12-01-preview",
+            "properties": {
+                "displayName": "[Lab] Windows - criação de conta local 4720",
+                "description": "Detecta a criação de uma conta local no Windows por meio do Event ID 4720. Regra de laboratório associada à técnica T1136.001 - Create Account: Local Account.",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "SecurityEvent\r\n| where EventID == 4720\r\n| where isnotempty(TargetUserName)\r\n| project\r\n    TimeGenerated,\r\n    Computer,\r\n    TargetUserName,\r\n    SubjectUserName",
+                "queryFrequency": "PT5M",
+                "queryPeriod": "PT10M",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "startTimeUtc": null,
+                "tactics": [
+                    "Persistence"
+                ],
+                "techniques": [
+                    "T1136"
+                ],
+                "subTechniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": false,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT5H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "AlertPerResult"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": {},
+                "entityMappings": null,
+                "sentinelEntitiesMappings": null,
+                "templateVersion": null
+            }
+        },
+        {
+            "id": "[concat(resourceId('Microsoft.OperationalInsights/workspaces/providers', parameters('workspace'), 'Microsoft.SecurityInsights'),'/alertRules/f8b203bc-ccd3-485e-b148-4c09e1f77d05')]",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/f8b203bc-ccd3-485e-b148-4c09e1f77d05')]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "kind": "Scheduled",
+            "apiVersion": "2023-12-01-preview",
+            "properties": {
+                "displayName": "[Lab] Entra ID - múltiplas falhas de autenticação 50126",
+                "description": "Detecta 5 ou mais falhas de autenticação no Microsoft Entra ID com ResultType 50126 para o mesmo usuário e endereço IP em uma janela de 15 minutos. Regra de laboratório associada à técnica T1110.",
+                "severity": "Medium",
+                "enabled": true,
+                "query": "SigninLogs\r\n| where ResultType == \"50126\"\r\n| where isnotempty(UserPrincipalName)\r\n| summarize\r\n    Falhas = count(),\r\n    Primeiro = min(TimeGenerated),\r\n    Ultimo = max(TimeGenerated)\r\n    by UserPrincipalName, IPAddress\r\n| where Falhas >= 5",
+                "queryFrequency": "PT5M",
+                "queryPeriod": "PT15M",
+                "triggerOperator": "GreaterThan",
+                "triggerThreshold": 0,
+                "suppressionDuration": "PT5H",
+                "suppressionEnabled": false,
+                "startTimeUtc": null,
+                "tactics": [
+                    "CredentialAccess"
+                ],
+                "techniques": [
+                    "T1110"
+                ],
+                "subTechniques": [],
+                "alertRuleTemplateName": null,
+                "incidentConfiguration": {
+                    "createIncident": true,
+                    "groupingConfiguration": {
+                        "enabled": true,
+                        "reopenClosedIncident": false,
+                        "lookbackDuration": "PT1H",
+                        "matchingMethod": "AllEntities",
+                        "groupByEntities": [],
+                        "groupByAlertDetails": [],
+                        "groupByCustomDetails": []
+                    }
+                },
+                "eventGroupingSettings": {
+                    "aggregationKind": "AlertPerResult"
+                },
+                "alertDetailsOverride": null,
+                "customDetails": {
+                    "Falhas": "Falhas",
+                    "Primeiro": "Primeiro",
+                    "Ultimo": "Ultimo"
+                },
+                "entityMappings": [
+                    {
+                        "entityType": "Account",
+                        "fieldMappings": [
+                            {
+                                "identifier": "FullName",
+                                "columnName": "UserPrincipalName"
+                            }
+                        ]
+                    },
+                    {
+                        "entityType": "IP",
+                        "fieldMappings": [
+                            {
+                                "identifier": "Address",
+                                "columnName": "IPAddress"
+                            }
+                        ]
+                    }
+                ],
+                "sentinelEntitiesMappings": null,
+                "templateVersion": null
+            }
+        }
+    ]
+}
