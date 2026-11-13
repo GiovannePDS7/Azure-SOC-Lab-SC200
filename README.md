@@ -5,9 +5,8 @@ simulações controladas e detecções no Microsoft Sentinel para estudo da cert
 SC-200.
 
 > [!NOTE]
-> A execução do laboratório foi concluída e o ambiente Azure foi removido após o
-> término dos créditos gratuitos. Este repositório preserva a configuração histórica,
-> os resultados registrados e as evidências selecionadas.
+> O laboratório foi concluído e o ambiente Azure foi removido ao final da execução.
+> Este repositório reúne a configuração, os resultados e as evidências das atividades.
 
 ## Índice
 
@@ -18,7 +17,6 @@ SC-200.
 - [Investigação e análise](#investigação-e-análise)
 - [Como explorar o projeto](#como-explorar-o-projeto)
 - [Estrutura do repositório](#estrutura-do-repositório)
-- [Limites e cuidados](#limites-e-cuidados)
 
 ## Visão geral
 
@@ -69,8 +67,7 @@ telemetria, detecção e resposta.
 
 As simulações foram executadas em ambiente controlado para gerar sinais de
 autenticação, execução, persistência e alterações de privilégios. As oito regras
-analíticas abaixo foram testadas e validadas no Azure, conforme confirmação do
-responsável pelo laboratório.
+analíticas abaixo foram testadas e validadas no Azure durante o laboratório.
 
 | Comportamento | Regra analítica | Técnica ATT&CK no export |
 | --- | --- | --- |
@@ -85,8 +82,8 @@ responsável pelo laboratório.
 
 No export, as regras estão habilitadas, têm severidade Medium e frequência de
 execução de cinco minutos. Os períodos de consulta e os agrupamentos variam; os
-limiares de eventos estão nas consultas KQL. Os mapeamentos de entidades estão
-presentes apenas nas regras de SSH, RDP e falhas no Entra ID.
+limiares de eventos estão nas consultas KQL. As regras de SSH, RDP e falhas no
+Entra ID incluem mapeamentos de entidades.
 
 Consulte as [simulações](simulacoes/README.md), o [catálogo KQL](deteccoes/consultas-kql/README.md)
 e a [cobertura MITRE ATT&CK](documentacao/mitre-coverage.md). Algumas simulações
@@ -95,34 +92,34 @@ descrevem subtécnicas mais específicas do que as técnicas principais no expor
 ## Resultados registrados
 
 - **Validação RDP:** uma consulta encontrou sete falhas de logon em cerca de
-  23 segundos; o registro relata um incidente com seis alertas agrupados e
-  confirma as entidades IP e Host.
+  23 segundos; um incidente reuniu seis alertas agrupados e apresentou as entidades
+  IP e Host.
 - **Pasta de trabalho:** em uma janela de 30 dias, foram registrados 18 eventos
-  de falha SSH, 12 de RDP e 7 do Entra ID. São contagens de eventos, não de ataques
-  distintos.
+  de falha SSH, 12 de RDP e 7 do Entra ID.
 - **Coleta de processos:** a política de linha de comando do evento Windows 4688
   foi habilitada para enriquecer a telemetria de criação de processos.
-- **Tarefa agendada:** o evento 4698 esperado não foi observado; a validação usou
-  o evento 4688 e uma consulta local da tarefa.
+- **Tarefa agendada:** a criação foi observada no evento 4688 e confirmada por
+  consulta local à tarefa.
 
-O [registro do laboratório](documentacao/lab-build-record.md) reúne os resultados
-e suas limitações. O [diário de simulações](documentacao/attack-journal.md)
+O [registro do laboratório](documentacao/lab-build-record.md) reúne a implantação
+e os resultados observados. O [diário de simulações](documentacao/attack-journal.md)
 documenta os horários e os sinais observados, e a
 [pasta de trabalho](pastas-de-trabalho/soc-dashboard.md) detalha os painéis.
 
 ## Investigação e análise
 
-- **Incidentes:** o caso RDP registra a identificação do incidente, a severidade
-  e as entidades observadas. O agrupamento reduziu a duplicação de incidentes,
-  mas não eliminou alertas repetidos.
+- **Incidentes:** o caso RDP registra a identificação e a severidade do incidente,
+  além das entidades observadas. O agrupamento de alertas reduziu a duplicação de
+  incidentes.
 - **Busca de ameaças:** as [hipóteses de investigação](caca-ameacas/README.md)
-  são pontos de partida para buscas futuras, não resultados de uma caçada confirmada.
+  apresentam cenários para investigar comprometimento de contas, persistência por
+  tarefa agendada e uso suspeito de PowerShell.
 - **Phishing:** dois [casos sintéticos](phishing/README.md) exercitam a triagem
   de uma mensagem de coleta de credenciais e de uma fraude de fornecedor. O
   [script de análise](scripts/README.md) processa arquivos `.eml` sem executar
   seu conteúdo.
-- **Automação:** os diagramas de resposta são referências de fluxo; as evidências
-  disponíveis não comprovam a execução de um playbook.
+- **Automação:** o [fluxo de resposta a incidentes](diagramas/incident-response-flow.png)
+  apresenta uma referência visual para a investigação e o tratamento de incidentes.
 
 ## Como explorar o projeto
 
@@ -135,19 +132,20 @@ documenta os horários e os sinais observados, e a
 4. Consulte as [lições aprendidas](documentacao/lessons-learned.md) e os exercícios
    de [phishing](phishing/README.md) para complementar a investigação.
 
-Para uma eventual recriação, a [configuração do laboratório](documentacao/lab-setup.md)
-descreve a sequência histórica. O
+A [configuração do laboratório](documentacao/lab-setup.md) apresenta a sequência
+de implantação como referência para recriar o ambiente em recursos autorizados e
+isolados. O
 [export ARM das regras](deteccoes/regras-analiticas/azure-sentinel-analytics-rules.json)
-é parametrizado e requer um workspace. Antes de usá-lo, revise o registro da
-implantação, incluindo a divergência documentada na configuração da regra RDP, e
-valide as consultas e os campos no ambiente de destino.
+é parametrizado e requer um workspace. Antes de usá-lo, consulte a referência
+adotada para a regra RDP no [registro da implantação](documentacao/lab-build-record.md)
+e valide as consultas e os campos no ambiente de destino.
 
 ## Estrutura do repositório
 
 | Área | Conteúdo |
 | --- | --- |
 | [Documentação](documentacao/README.md) | Arquitetura, implantação, custos, solução de problemas e lições |
-| [Infraestrutura](infraestrutura/README.md) | Configuração histórica da rede, dos endpoints, do Entra ID e do Sentinel |
+| [Infraestrutura](infraestrutura/README.md) | Configuração da rede, dos endpoints, do Entra ID e do Sentinel |
 | [Simulações](simulacoes/README.md) | Exercícios controlados e sinais esperados |
 | [Detecções](deteccoes/README.md) | Consultas KQL, regras analíticas e ajustes |
 | [Busca de ameaças](caca-ameacas/README.md) | Hipóteses e consultas de referência |

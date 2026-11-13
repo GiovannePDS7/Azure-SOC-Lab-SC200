@@ -25,7 +25,9 @@ erros de execução e capturas sem relação clara com o laboratório.
 - `fase-0`: rede, NSGs, máquinas virtuais e configuração de acesso.
 - `fase-1`: Sentinel, conectores e validação da ingestão de telemetria.
 - `fase-2`: simulações controladas e eventos observados.
-- `fase-3`: regras analíticas, MITRE ATT&CK, incidentes e pastas de trabalho.
+- `fase-3`: regras analíticas, MITRE ATT&CK, incidentes e pastas de trabalho,
+  incluindo o [incidente RDP](fase-3/incidentes/incidente-deteccao-de-falhas-rdp.png)
+  e a [investigação SSH](fase-3/incidentes/incidente-investigacao-de-forca-bruta-ssh.png).
 - `fase-4`: sem capturas mantidas; a imagem disponível mostrava um incidente, mas não
   comprovava a execução de um playbook.
 - `fase-5`: uma captura de configurações do Defender for Cloud; ela não comprova que
@@ -40,3 +42,7 @@ Pastas sem capturas selecionadas não são mantidas apenas como marcadores vazio
 Os nomes descrevem o recurso, a consulta ou a etapa mostrada, sem incluir a data ou o
 horário da captura. Quando há mais de uma imagem sobre o mesmo tema, o nome destaca a
 diferença entre as telas, como o estado do conector ou o tipo de evento consultado.
+
+Nesta revisão, os valores de senha legíveis nas capturas do teste de conta local foram
+cobertos com tarjas opacas. O histórico Git remoto ainda pode conter as versões
+anteriores; a remoção dessas versões exige uma limpeza coordenada do histórico.
