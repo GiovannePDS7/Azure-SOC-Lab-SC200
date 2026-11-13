@@ -156,17 +156,3 @@ valide as consultas e os campos no ambiente de destino.
 | [Diagramas](diagramas/README.md) | Representações da arquitetura e dos fluxos |
 | [Evidências](evidencias/README.md) | Capturas selecionadas e organizadas por fase |
 | [Scripts](scripts/README.md) | Triagem estática de mensagens `.eml` |
-
-## Limites e cuidados
-
-- As capturas não comprovam individualmente todos os resultados informados, e a
-  variação de cobertura na matriz ATT&CK não foi quantificada.
-- Os limiares foram escolhidos para o baixo volume do laboratório e não devem ser
-  tratados como configurações prontas para produção.
-- O ambiente foi removido; não há confirmação registrada de que o grupo de recursos
-  ficou vazio ou de que não houve cobranças residuais. Consulte a
-  [desmontagem](documentacao/teardown.md) e a [gestão de custos](documentacao/cost-management.md).
-- Em uma recriação, use somente recursos autorizados e isolados, restrinja os
-  acessos e remova permissões temporárias e artefatos de teste.
-- Não inclua segredos, dados pessoais ou dados de clientes. As evidências receberam
-  tarjas, mas devem ser revisadas antes de compartilhamento.
